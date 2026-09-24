@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg-base: #090B10;
+    --color-bg-surface: #121620;
+    --color-bg-card: rgba(22, 27, 39, 0.7);
+    --color-accent-pink: #FF4D8D;
+    --color-accent-cyan: #00F2FE;
+    --color-accent-violet: #7928CA;
+    --color-text-primary: #F8FAFC;
+    --color-text-secondary: #94A3B8;
+    --sat-top: env(safe-area-inset-top, 0px);
+    --sat-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .light {
+    --color-bg-base: #F8FAFC;
+    --color-bg-surface: #FFFFFF;
+    --color-bg-card: rgba(255, 255, 255, 0.85);
+    --color-accent-pink: #E11D48;
+    --color-accent-cyan: #0891B2;
+    --color-accent-violet: #6D28D9;
+    --color-text-primary: #0F172A;
+    --color-text-secondary: #64748B;
+  }
+
+  html {
+    height: 100dvh;
+  }
+
+  body {
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    -webkit-tap-highlight-color: transparent;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100dvh;
+    overscroll-behavior-y: contain;
+    touch-action: pan-x pan-y;
+  }
+
+  /* Permitir selección solo en inputs y textos de lectura */
+  input, textarea, [data-selectable="true"] {
+    user-select: text;
+    -webkit-touch-callout: default;
+  }
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 77, 141, 0.5);
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(18, 22, 32, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.light .glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(15, 23, 42, 0.08);
+}
+
+.glass-nav {
+  background: rgba(9, 11, 16, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: var(--sat-bottom);
+}
+
+.light .glass-nav {
+  background: rgba(255, 255, 255, 0.9);
+  border-top-color: rgba(15, 23, 42, 0.08);
+}
+
+.pb-safe {
+  padding-bottom: calc(0.25rem + var(--sat-bottom));
+}
+
+.pt-safe {
+  padding-top: var(--sat-top);
+}
+
+/* Safe full-height for Android gesture nav */
+.min-h-dvh {
+  min-height: 100dvh;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Render diferido: las tarjetas fuera de pantalla no bloquean el scroll en gama baja */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 180px 320px;
+}
+
+/* Smooth hero image scale on touch/hover */
+.wallpaper-card-img {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+
+.wallpaper-card-container:hover .wallpaper-card-img {
+  transform: scale(1.04);
+}
+
+/* Shimmer animation for skeletons */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 25%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+}

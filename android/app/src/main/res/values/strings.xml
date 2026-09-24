@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Yūgen Anime Wallpapers</string>
+    <string name="title_activity_main">Yūgen Anime Wallpapers</string>
+    <string name="package_name">art.yugen.wallpapers</string>
+    <string name="custom_url_scheme">art.yugen.wallpapers</string>
+</resources>

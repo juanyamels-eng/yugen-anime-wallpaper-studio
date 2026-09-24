@@ -1,0 +1,6 @@
+{
+  "name": "Yūgen (幽玄) — Anime Wallpaper Studio",
+  "description": "Aplicación móvil y plataforma premium de fondos de pantalla anime originales en 4K y AMOLED con visor cinematográfico, simulador de pantalla y panel de administración.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
