@@ -2,15 +2,32 @@ import { useState, useEffect, useCallback } from 'react';
 import { wallpaperRepository } from '../repositories';
 import { analytics } from '../services/analyticsService';
 
-const FAVORITES_STORAGE_KEY = 'yugen_favorites_v1';
+const FAVORITES_STORAGE_KEY = 'yugen_favorites_v2';
 
 export function useFavorites() {
   const [favorites, setFavorites] = useState<string[]>(() => {
     try {
       const stored = localStorage.getItem(FAVORITES_STORAGE_KEY);
-      return stored ? JSON.parse(stored) : ['wp-cyber-01', 'wp-samurai-01', 'wp-sakura-01'];
+      if (stored) {
+        return JSON.parse(stored);
+      }
+      // Check legacy v1 key and filter out the old mock 3 items
+      const oldStored = localStorage.getItem('yugen_favorites_v1');
+      if (oldStored) {
+        const parsed = JSON.parse(oldStored);
+        const isOldDefault =
+          Array.isArray(parsed) &&
+          parsed.length === 3 &&
+          parsed.includes('wp-cyber-01') &&
+          parsed.includes('wp-samurai-01') &&
+          parsed.includes('wp-sakura-01');
+        if (!isOldDefault && Array.isArray(parsed)) {
+          return parsed;
+        }
+      }
+      return [];
     } catch {
-      return ['wp-cyber-01', 'wp-samurai-01', 'wp-sakura-01'];
+      return [];
     }
   });
 

@@ -25,12 +25,12 @@ import { UserProfile, UserTheme, AppLanguage, DownloadQuality } from '../../type
 import { MONETIZATION_CONFIG } from '../../config/monetization.config';
 import { Button } from '../common/Button';
 import { Modal } from '../common/Modal';
-import { PWAInstallButton } from '../common/PWAInstallButton';
 import { PrivacyPolicyModal, TermsModal } from '../legal/LegalModals';
 import { AdFreePassCard } from '../ads/AdFreePassCard';
 import { exportBackup, parseBackupFile, restoreBackup } from '../../services/backupService';
 import { adService } from '../../services/adService';
 import { adminAuthService } from '../../services/adminAuthService';
+import { Capacitor } from '@capacitor/core';
 
 interface ProfileScreenProps {
   userProfile: UserProfile;
@@ -109,7 +109,13 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
   };
 
   return (
-    <div className="pb-28 max-w-lg mx-auto px-4 pt-2 text-slate-200">
+    <div className="pb-28 max-w-lg mx-auto px-4 pt-3 text-slate-200">
+      {/* Screen Title */}
+      <div className="mb-3">
+        <h1 className="text-xl font-black text-white tracking-tight">Perfil</h1>
+        <p className="text-xs text-slate-400 mt-0.5">Ajustes de cuenta, descargas y preferencias</p>
+      </div>
+
       {/* USER HEADER CARD */}
       <div className="p-5 rounded-3xl bg-gradient-to-b from-[#161B28] to-[#10141F] border border-white/10 shadow-xl mb-5 relative overflow-hidden">
         <div className="flex items-center gap-4">
@@ -349,18 +355,23 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
           </label>
         </div>
 
-        {/* PWA INSTALLATION BANNER */}
+        {/* ANDROID NATIVE APP BUILD INFO */}
         <div className="p-4 rounded-3xl bg-gradient-to-r from-[#121622] via-[#161B28] to-[#121622] border border-white/10 flex items-center justify-between shadow-lg">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-[#00F2FE]">
+            <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
               <Smartphone className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-xs font-bold text-white">App Nativa / PWA</h4>
-              <p className="text-[11px] text-slate-400">Instala Yūgen en tu pantalla de inicio</p>
+              <div className="flex items-center gap-1.5">
+                <h4 className="text-xs font-bold text-white">Yūgen Anime Wallpapers</h4>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono">v1.4.1</span>
+              </div>
+              <p className="text-[11px] text-slate-400">Paquete APK Android · art.yugen.wallpapers</p>
             </div>
           </div>
-          <PWAInstallButton />
+          <span className="px-2.5 py-1 text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 rounded-full border border-emerald-500/20">
+            APK Nativo
+          </span>
         </div>
 
         {/* SYSTEM & MAINTENANCE */}

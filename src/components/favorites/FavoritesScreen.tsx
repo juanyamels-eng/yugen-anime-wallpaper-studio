@@ -59,8 +59,9 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
 
   return (
     <div className="pb-24 max-w-lg mx-auto min-h-screen">
-      {/* Top Segmented Tabs: Favoritos / Descargas */}
-      <div className="p-4">
+      {/* Screen Title & Top Segmented Tabs: Favoritos / Descargas */}
+      <div className="px-4 pt-3 pb-2">
+        <h1 className="text-xl font-black text-white tracking-tight mb-2">Tu Colección</h1>
         <div className="p-1 bg-[#121622] rounded-2xl border border-white/10 flex items-center shadow-inner">
           <button
             onClick={() => setActiveTab('favorites')}
@@ -71,7 +72,7 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
             }`}
           >
             <Heart className={`w-3.5 h-3.5 ${activeTab === 'favorites' ? 'fill-current' : ''}`} />
-            <span>Mis Favoritos ({favorites.length})</span>
+            <span>Mis Favoritos{favorites.length > 0 ? ` (${favorites.length})` : ''}</span>
           </button>
 
           <button
@@ -83,7 +84,7 @@ export const FavoritesScreen: React.FC<FavoritesScreenProps> = ({
             }`}
           >
             <FolderDown className="w-3.5 h-3.5" />
-            <span>Descargas ({downloadsHistory.length})</span>
+            <span>Descargas{downloadsHistory.length > 0 ? ` (${downloadsHistory.length})` : ''}</span>
           </button>
         </div>
       </div>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
-import { TopHeader } from './components/header/TopHeader';
 import { BottomNavigation, NavTab } from './components/navigation/BottomNavigation';
 import { ToastContainer, ToastMessage } from './components/common/Toast';
 import { OfflineIndicator } from './components/common/OfflineIndicator';
@@ -205,16 +204,8 @@ export default function App() {
         </Suspense>
       ) : (
         <>
-          {/* Top Sticky Header */}
-          <TopHeader
-            userProfile={profile}
-            onOpenProfile={() => setCurrentTab('profile')}
-            onOpenSearch={() => setCurrentTab('search')}
-            isOnline={isOnline}
-          />
-
           {/* Main Content Area */}
-          <main className="flex-1 w-full max-w-lg md:max-w-2xl mx-auto overflow-x-hidden pb-24">
+          <main className="flex-1 w-full max-w-lg md:max-w-2xl mx-auto overflow-x-hidden pb-24 pt-safe">
             <Suspense fallback={<ScreenFallback />}>
             {currentTab === 'home' && (
               <HomeScreen

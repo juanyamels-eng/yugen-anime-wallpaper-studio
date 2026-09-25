@@ -98,18 +98,19 @@ export const StickersScreen: React.FC<StickersScreenProps> = ({ wallpapers, onSh
   };
 
   return (
-    <div className="pb-24 pt-2 px-3 sm:px-4 max-w-lg mx-auto space-y-4 animate-in fade-in duration-300">
+    <div className="pb-24 pt-3 px-3 sm:px-4 max-w-lg mx-auto space-y-4 animate-in fade-in duration-300">
       {/* Hero Header */}
       <div className="relative p-5 rounded-3xl bg-gradient-to-br from-[#1A0B2E] via-[#121622] to-[#0A1128] border border-white/10 shadow-2xl overflow-hidden">
         <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-[#FF4D8D]/15 rounded-full blur-2xl pointer-events-none" />
         <div className="absolute -left-6 -top-6 w-32 h-32 bg-[#00F2FE]/15 rounded-full blur-2xl pointer-events-none" />
 
         <div className="relative z-10">
-          <div className="flex items-center gap-2 mb-1.5">
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-[#FF4D8D] to-[#7928CA] text-white shadow-sm">
-              Nuevo
+          <div className="flex items-center gap-2 mb-1.5 text-xs">
+            <span className="font-bold text-[#FF4D8D] uppercase tracking-wider">
+              Sticker Studio
             </span>
-            <span className="text-xs text-slate-400 font-medium">WhatsApp & Telegram</span>
+            <span className="text-white/30">·</span>
+            <span className="text-slate-400 font-medium">WhatsApp & Telegram</span>
           </div>
 
           <h1 className="text-2xl font-black text-white tracking-tight leading-tight">

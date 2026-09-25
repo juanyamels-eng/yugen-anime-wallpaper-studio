@@ -72,7 +72,7 @@ export const ExploreScreen: React.FC<ExploreScreenProps> = ({
       {(activeCategory || activeCollection) ? (
         <div>
           {/* Header */}
-          <div className="sticky top-[68px] z-20 bg-[#090B10]/95 backdrop-blur-xl border-b border-white/5 p-4 flex items-center justify-between">
+          <div className="sticky top-0 z-20 pt-safe bg-[#090B10]/95 backdrop-blur-xl border-b border-white/5 p-4 flex items-center justify-between">
             <button
               onClick={handleBackToExplore}
               className="min-h-[44px] flex items-center gap-1.5 text-xs font-semibold text-white hover:text-[#00F2FE] cursor-pointer"
@@ -114,7 +114,13 @@ export const ExploreScreen: React.FC<ExploreScreenProps> = ({
         </div>
       ) : (
         /* Standard Explore View */
-        <div className="space-y-6 pt-2">
+        <div className="space-y-6 pt-3">
+          {/* Screen Title */}
+          <div className="px-4">
+            <h1 className="text-xl font-black text-white tracking-tight">Explorar</h1>
+            <p className="text-xs text-slate-400 mt-0.5">Colecciones temáticas y categorías anime en 4K</p>
+          </div>
+
           {/* Featured Collections Carousel */}
           <div>
             <div className="px-4 pb-2.5 flex items-center justify-between">

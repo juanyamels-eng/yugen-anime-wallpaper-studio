@@ -90,21 +90,16 @@ export const WallpaperCard: React.FC<WallpaperCardProps> = ({
         <div className="absolute inset-0 bg-gradient-to-b from-[#161B28] to-[#0D1017] animate-pulse" />
       )}
 
-      {/* Subtle top badges (Resolution, Premium) */}
+      {/* Subtle top metadata */}
       <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none z-10">
-        <div className="flex items-center gap-1.5">
-          {wallpaper.isAmoled ? (
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-black/75 text-[#00F2FE] border border-[#00F2FE]/30 backdrop-blur-sm">
+        <div className="flex items-center gap-1.5 text-[10px] font-semibold">
+          {wallpaper.isAmoled && (
+            <span className="px-1.5 py-0.5 rounded bg-black/70 text-[#00F2FE] border border-[#00F2FE]/25 backdrop-blur-sm">
               AMOLED
             </span>
-          ) : (
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-black/60 text-slate-200 border border-white/10 backdrop-blur-sm">
-              {wallpaper.resolution.label}
-            </span>
           )}
-
           {wallpaper.isPremium && (
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/90 text-black flex items-center gap-0.5 shadow-sm">
+            <span className="px-1.5 py-0.5 rounded bg-amber-500/90 text-black font-bold flex items-center gap-0.5 shadow-sm">
               <Sparkles className="w-2.5 h-2.5" /> PRO
             </span>
           )}

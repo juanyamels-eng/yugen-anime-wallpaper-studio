@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // Ensure window.fetch is writable and has both a getter and a setter so iframe harnesses/test suites can hook fetch without throwing
+      (function() {
+        try {
+          if (typeof window === 'undefined') return;
+
+          // 1. Traverse prototype chain and ensure any getter on Window/WindowProperties has a matching setter
+          var p = window;
+          while (p) {
+            try {
+              var d = Object.getOwnPropertyDescriptor(p, 'fetch');
+              if (d && d.configurable) {
+                (function(desc, proto) {
+                  Object.defineProperty(proto, 'fetch', {
+                    get: function() {
+                      return this.__custom_fetch__ || (desc.get ? desc.get.call(this) : desc.value);
+                    },
+                    set: function(val) {
+                      this.__custom_fetch__ = val;
+                    },
+                    configurable: true,
+                    enumerable: true
+                  });
+                })(d, p);
+              }
+            } catch (errProto) {}
+            p = Object.getPrototypeOf(p);
+          }
+
+          // 2. Define own property on window with explicit getter and setter
+          var nativeFetch = window.fetch ? window.fetch.bind(window) : null;
+          var activeFetch = nativeFetch;
+          try {
+            Object.defineProperty(window, 'fetch', {
+              get: function() {
+                return activeFetch || (window.__custom_fetch__ || nativeFetch);
+              },
+              set: function(fn) {
+                activeFetch = fn;
+                try { window.__custom_fetch__ = fn; } catch (e) {}
+              },
+              configurable: true,
+              enumerable: true
+            });
+          } catch (errWin) {}
+        } catch (e) {
+          // Fallback gracefully
+        }
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Yūgen (幽玄) — Anime Wallpaper Studio</title>
+    <meta name="description" content="Aplicación móvil y plataforma premium de fondos de pantalla anime originales en 4K y AMOLED con visor cinematográfico, simulador de pantalla y panel de administración." />
+    <meta property="og:title" content="Yūgen (幽玄) — Anime Wallpaper Studio" />
+    <meta property="og:description" content="Aplicación móvil y plataforma premium de fondos de pantalla anime originales en 4K y AMOLED con visor cinematográfico, simulador de pantalla y panel de administración." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#090B10" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Yūgen" />
+    <meta name="application-name" content="Yūgen" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/pwa-192x192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "Yūgen (幽玄) — Anime Wallpaper Studio",
+      "operatingSystem": "Android, iOS, Web",
+      "applicationCategory": "PersonalizationApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Aplicación móvil y plataforma premium de fondos de pantalla anime originales en 4K y AMOLED con visor cinematográfico, simulador de pantalla y panel de administración."
+    }
+    </script>
+    <script type="module" crossorigin src="/assets/index-CRPyEaT-.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-Di5KXSeB.js">
+    <link rel="modulepreload" crossorigin href="/assets/capacitor-kTurfa8G.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-vz54d27s.css">
+  <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+  <body class="bg-[#090B10] text-[#F8FAFC] antialiased selection:bg-[#FF4D8D]/30 selection:text-white overflow-x-hidden font-sans">
+    <div id="root"></div>
+  </body>
+</html>

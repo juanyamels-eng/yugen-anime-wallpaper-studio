@@ -1,0 +1,26 @@
+{
+	"appId": "art.yugen.wallpapers",
+	"appName": "Yūgen Anime Wallpapers",
+	"webDir": "dist",
+	"backgroundColor": "#090B10",
+	"android": {
+		"allowMixedContent": false,
+		"captureInput": true,
+		"webContentsDebuggingEnabled": false
+	},
+	"plugins": {
+		"SplashScreen": {
+			"launchShowDuration": 1200,
+			"backgroundColor": "#090B10",
+			"showSpinner": false,
+			"androidScaleType": "CENTER_CROP",
+			"splashFullScreen": true,
+			"splashImmersive": true
+		},
+		"StatusBar": {
+			"style": "DARK",
+			"backgroundColor": "#090B10",
+			"overlaysWebView": false
+		}
+	}
+}

@@ -12,7 +12,6 @@ import { WallpaperCard } from '../wallpaper/WallpaperCard';
 import { SkeletonGrid } from '../common/LoadingSkeleton';
 import { NativeBannerAd } from '../ads/NativeBannerAd';
 import { AdFreePassCard } from '../ads/AdFreePassCard';
-import { InstallBannerCallout } from '../common/InstallBannerCallout';
 import { NavTab } from '../navigation/BottomNavigation';
 
 interface HomeScreenProps {
@@ -123,6 +122,21 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
 
   return (
     <div className="pb-24 max-w-lg mx-auto">
+      {/* Native Mobile Screen Header */}
+      <div className="px-4 pt-3 pb-2 flex items-baseline justify-between">
+        <div>
+          <h1 className="text-xl font-black text-white tracking-tight flex items-baseline gap-1.5">
+            <span>Yūgen</span>
+            <span className="text-xs font-normal text-[#FF4D8D]">幽玄</span>
+            <span className="text-[10px] font-mono text-slate-500">· 4K</span>
+          </h1>
+          <p className="text-[11px] text-slate-400 font-medium">Fondos de pantalla anime en ultra resolución</p>
+        </div>
+        <span className="text-[11px] font-bold text-[#00F2FE]">
+          Ultra HD
+        </span>
+      </div>
+
       {/* Featured Cinematic Banner */}
       {featuredWallpaper && (
         <FeaturedHeroBanner
@@ -131,9 +145,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           onApply={onApplyWallpaper}
         />
       )}
-
-      {/* App Install Callout */}
-      <InstallBannerCallout />
 
       {/* Category Chips Carousel */}
       <CategoryChipsRow

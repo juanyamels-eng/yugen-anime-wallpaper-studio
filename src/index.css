@@ -96,7 +96,7 @@
 }
 
 .pt-safe {
-  padding-top: var(--sat-top);
+  padding-top: max(var(--sat-top), 10px);
 }
 
 /* Safe full-height for Android gesture nav */
